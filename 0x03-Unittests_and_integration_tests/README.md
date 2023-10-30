@@ -1,7 +1,7 @@
 # 0x03-Unittests_and_integration_tests
 This project contains tasks for learning to write unittests and integration tests in Python 3.
 
-[x] Resources
++ [x] Resources
  + [unittest — Unit testing framework](https://docs.python.org/3/library/unittest.html)
  + [unittest.mock — mock object library](https://docs.python.org/3/library/unittest.mock.html)
  + [How to mock a readonly property with mock?](https://stackoverflow.com/questions/11836436/how-to-mock-a-readonly-property-with-mock)
@@ -9,7 +9,7 @@ This project contains tasks for learning to write unittests and integration test
  + [Memoization](https://en.wikipedia.org/wiki/Memoization)
 
 ## Tasks To Complete
- [x] 0. Parameterize a unit test 
++ [x] 0. Parameterize a unit test 
  
  + [test_utils.py](test_utils.py) contains a python module that meets the following requirements:
    + Familiarize yourself with the `utils.access_nested_map` function and understand its purpose. Play with it in the Python console to make sure you understand.
@@ -24,7 +24,9 @@ This project contains tasks for learning to write unittests and integration test
     ```
    + For each of these inputs, test with assertEqual that the function returns the expected result.
    + The body of the test method should not be longer than 2 lines.
- [x] 1. Parameterize a unit test
+     
++ [x] 1. Parameterize a unit test
+ 
 + [test_utils.py](test_utils.py) contains a python module that meets the following requirements:
  
   + Implement `TestAccessNestedMap.test_access_nested_map_exception`. Use the assertRaises context manager to test that a `KeyError`is raised for the following inputs (use `@parameterized.expand`):
@@ -33,7 +35,9 @@ This project contains tasks for learning to write unittests and integration test
       nested_map={"a": 1}, path=("a", "b")
     ```
   + The exception message should be as expected.
- [x] 2. Mock HTTP calls
+    
++ [x] 2. Mock HTTP calls
+ 
 + [test_utils.py](test_utils.py) contains a python module that meets the following requirements:
 
     + Familiarize yourself with the utils.get_json function.
@@ -45,7 +49,9 @@ This project contains tasks for learning to write unittests and integration test
       ```
     + Test that the mocked get method was called exactly once (per input) with test_url as argument.
     + Test that the output of get_json is equal to test_payload.
- [x] 3. Parameterize and patch
+      
++ [x] 3. Parameterize and patch
+
 + [test_utils.py](test_utils.py) contains a python module that meets the following requirements:
 
     + Read about memoization and familiarize yourself with the `utils.memoize` decorator.
@@ -63,7 +69,8 @@ This project contains tasks for learning to write unittests and integration test
       ```
    + Use `unittest.mock.patch` to `mock a_method`. Test that when calling `a_property` twice, the correct result is returned but `a_method` is only called once using `assert_called_once`.
 
-[x] 4. Parameterize and patch as decorators
++ [x] 4. Parameterize and patch as decorators
+
 + [test_client.py](test_client.py) contains a python module that meets the following requirements:
 
    + Familiarize yourself with the `client.GithubOrgClient` class.
@@ -74,14 +81,18 @@ This project contains tasks for learning to write unittests and integration test
       + google.
       + abc.
    + No external HTTP calls should be made.
-[x] 5. Mocking a property
+   + 
++ [x] 5. Mocking a property
+
 + [test_client.py](test_client.py) contains a python module that meets the following requirements:
 
   + memoize turns methods into properties. Read up on how to mock a property.
   + Implement the test_public_repos_url method to unit-test GithubOrgClient._public_repos_url.
   + Use patch as a context manager to patch GithubOrgClient.org and make it return a known payload.
   + Test that the result of _public_repos_url is the expected one based on the mocked payload.
-[x] 6. More patching
+    
++ [x] 6. More patching
+
 + [test_client.py](test_client.py) contains a python module that meets the following requirements:
 
   + Implement `TestGithubOrgClient.test_public_repos` to unit-test `GithubOrgClient.public_repos`.
@@ -89,7 +100,9 @@ This project contains tasks for learning to write unittests and integration test
   + Use `patch` as a context manager to mock `GithubOrgClient._public_repos_url` and return a value of your choice.
   + Test that the list of `repos` is what you expect from the chosen payload.
   + Test that the mocked property and the mocked `get_json` was called once.
-[x] 7. Parameterize
+    
++ [x] 7. Parameterize
+
 + [test_client.py](test_client.py) contains a python module that meets the following requirements:
 
   + Implement `TestGithubOrgClient.test_has_license` to unit-test `GithubOrgClient.has_license`.
@@ -99,7 +112,9 @@ This project contains tasks for learning to write unittests and integration test
       repo={"license": {"key": "bsl-1.0"}}, license_key="bsd-3-clause"
     ```
   + You should also parameterize the expected returned value.
-[x] 8. Integration test: fixtures
+    
++ [x] 8. Integration test: fixtures
+
 + [test_client.py](test_client.py) contains a python module that meets the following requirements:
 
   + We want to test the `GithubOrgClient.public_repos` method in an integration test. That means that we will only mock code that sends external requests.
@@ -110,8 +125,10 @@ This project contains tasks for learning to write unittests and integration test
     ```
   + The `setupClass` should mock `requests.get` to return example `payloads` found in the fixtures.
   + Use `patch` to start a patcher named `get_patcher`, and use `side_effect` to make sure the mock of `requests.get(url).json()` returns the correct fixtures for the various values of `url` that you anticipate to receive.
-  + Implement the `tearDownClass` class method to stop the patcher.
- [x] 9. Integration tests
+  + Implement the `tearDownClass` class method to stop the `patcher`.
+    
+ + [x] 9. Integration tests
+ 
 + [test_client.py](test_client.py) contains a python module that meets the following requirements:
 
   + Implement the `test_public_repos` method to test `GithubOrgClient.public_repos`.
